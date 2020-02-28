@@ -10,7 +10,7 @@ namespace Fegyverek
     {
         
 
-        enum fegyver { pisztoly,bfg9000,m4a1,ágyú}
+        enum fegyver { pisztoly, bfg9000, m4a1, ágyú}
 
         const int maxPisztoly = 100;
         const int maxBfg = 50;
@@ -34,8 +34,8 @@ namespace Fegyverek
 
             Betáraz(inventory);
             Kilistáz(inventory);
-            int db=Csekkol(inventory, fegyver.aktfegyver);  //Egy adott fegyverben hány töltény van.
-            Felvesz(inventory);
+            int db=Csekkol(inventory, fegyver.ágyú);  //Egy adott fegyverben hány töltény van.
+            Felvesz(inventory,fegyver.ágyú);
             Eldob(inventory);
 
 
@@ -44,9 +44,35 @@ namespace Fegyverek
             Console.ReadKey();
         }
 
+        private static void Felvesz(List<Fegyver> inventory, fegyver fegy)
+        {
+            //Eldöntés tétel
+            bool van = false;
+            int i = 0;
+            foreach (Fegyver f in inventory)
+            {
+                if (f.név == fegy)
+                {
+                    van = true;
+                    break;
+                }
+                i++;
+            }
+            if (van)
+            {
+
+            }
+            
+        }
+
         private static int Csekkol(List<Fegyver> inventory, fegyver.aktFegyver)
         {
-            
+            int i = 0;
+            while (inventory[i].név!=ágyú)
+            {
+                i++;
+            }
+            return inventory[i].töltény;
         }
 
         private static void Kilistáz(List<Fegyver> inventory)
